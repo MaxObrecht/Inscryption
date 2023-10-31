@@ -1,5 +1,6 @@
 
 public class Map
 	{
-//randomely generated paths of rooms
+		//randomly generated paths of rooms
+		//methods that sets map and displays map
 	}
