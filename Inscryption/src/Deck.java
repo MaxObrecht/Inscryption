@@ -28,7 +28,7 @@ public class Deck
 			{
 				for (int i = 0; i < 10; i++)
 					{
-						stagnantSquirrelDeck.add(new Card(1, 0, 0, null, squirrel, SQUIRREL));
+						stagnantSquirrelDeck.add(new Card(1, 0, 0, null, "squirrel", "SQUIRREL"));
 					}
 			}
 
@@ -47,10 +47,10 @@ public class Deck
 
 		public static void fillStagnantStarterDeck()
 			{
-				stagnantPlayerDeck.add(new Card(2, 3, 2, null, dog, WOLF));
-				stagnantPlayerDeck.add(new Card(1, 1, 1, null, null, OPPOSUM));
-				stagnantPlayerDeck.add(new Card(3, 1, 1, null, null, STOAT));
-				stagnantPlayerDeck.add(new Card(2, 1, 1, airBlock, reptile, BULLFROG));
+				stagnantPlayerDeck.add(new Card(2, 3, 2, null, "dog", "WOLF"));
+				stagnantPlayerDeck.add(new Card(1, 1, 1, null, null, "OPPOSUM"));
+				stagnantPlayerDeck.add(new Card(3, 1, 1, null, null, "STOAT"));
+				stagnantPlayerDeck.add(new Card(2, 1, 1, "airBlock", "reptile", "BULLFROG"));
 			}
 
 		public static void fillStarterDeck()

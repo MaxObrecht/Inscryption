@@ -9,7 +9,7 @@ public class Card
 		private String cardType;
 		private String cardName;
 
-		public Card(int h, int a, String b, String t, String n)
+		public Card(int h, int a, int c, String b, String t, String n)
 			{
 				setCardHealth(h);
 				setCardAttack(a);
