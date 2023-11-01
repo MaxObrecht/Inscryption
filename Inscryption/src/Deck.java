@@ -3,22 +3,22 @@ import java.util.Collections;
 
 public class Deck
 	{
-		private ArrayList<Card> deckType;
-
-		Deck(ArrayList<Card> d)
-			{
-				setDeckType(d);
-			}
-
-		public ArrayList<Card> getDeckType()
-			{
-				return deckType;
-			}
-
-		public void setDeckType(ArrayList<Card> deckType)
-			{
-				this.deckType = deckType;
-			}
+//		private ArrayList<Card> deckType;
+//
+//		Deck(ArrayList<Card> d)
+//			{
+//				setDeckType(d);
+//			}
+//
+//		public ArrayList<Card> getDeckType()
+//			{
+//				return deckType;
+//			}
+//
+//		public void setDeckType(ArrayList<Card> deckType)
+//			{
+//				this.deckType = deckType;
+//			}
 
 		// arraylist of cards, pre-set decks
 		static ArrayList<Card> allCard = new ArrayList<Card>();

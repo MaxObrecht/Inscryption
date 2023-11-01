@@ -1,14 +1,15 @@
+import java.util.ArrayList;
 
 public class Player
 	{
 //Deck, Item, Totem, Candle, Scale
-		private Deck deck;
+		private ArrayList<Card> deck;
 		private Item item;
 		private Totem totem;
 		private int candle;
 		private int scale;
 
-		public Player(Deck d, Item i, Totem t, int c, int s)
+		public Player(ArrayList<Card> d, Item i, Totem t, int c, int s)
 			{
 				setDeck(d);
 				setItem(i);
@@ -17,12 +18,12 @@ public class Player
 				setScale(s);;
 			}
 
-		public Deck getDeck()
+		public ArrayList<Card> getDeck()
 			{
 					return deck;
 			}
 
-		public void setDeck(Deck deck)
+		public void setDeck(ArrayList<Card> deck)
 			{
 					this.deck = deck;
 			}
