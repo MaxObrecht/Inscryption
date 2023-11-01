@@ -3,19 +3,21 @@ public class Card
 	{
 //health, attack, attribute (enchantment), type
 		private int cardHealth;
-		private int cardAttack;
-		private int cardCost;
-		private String cardAttribute;
-		private String cardType;
+		private int cardPower;
+		private int cardBloodCost;
+		private int cardBoneCost;
+		private String cardSigil;
+		private String cardTribe;
 		private String cardName;
 
-		public Card(int h, int a, int c, String b, String t, String n)
+		public Card(int h, int p, int b, int o, String s, String t, String n)
 			{
 				setCardHealth(h);
-				setCardAttack(a);
-				setCardCost(c);
-				setCardAttribute(b);
-				setCardType(t);
+				setCardPower(p);
+				setCardBloodCost(b);
+				setCardBoneCost(o);
+				setCardSigil(s);
+				setCardTribe(t);
 				setCardName(n);
 			}
 
@@ -29,44 +31,54 @@ public class Card
 				this.cardHealth = cardHealth;
 			}
 
-		public int getCardAttack()
+		public int getCardPower()
 			{
-				return cardAttack;
+				return cardPower;
 			}
 
-		public void setCardAttack(int cardAttack)
+		public void setCardPower(int cardPower)
 			{
-				this.cardAttack = cardAttack;
+				this.cardPower = cardPower;
 			}
 
-		public int getCardCost()
+		public int getCardBloodCost()
 			{
-				return cardCost;
+				return cardBloodCost;
 			}
 
-		public void setCardCost(int cardCost)
+		public void setCardBloodCost(int cardBloodCost)
 			{
-				this.cardCost = cardCost;
+				this.cardBloodCost = cardBloodCost;
 			}
 
-		public String getCardAttribute()
+		public int getCardBoneCost()
 			{
-				return cardAttribute;
+				return cardBoneCost;
 			}
 
-		public void setCardAttribute(String cardAttribute)
+		public void setCardBoneCost(int cardBoneCost)
 			{
-				this.cardAttribute = cardAttribute;
+				this.cardBoneCost = cardBoneCost;
 			}
 
-		public String getCardType()
+		public String getCardSigil()
 			{
-				return cardType;
+				return cardSigil;
 			}
 
-		public void setCardType(String cardType)
+		public void setCardSigil(String cardSigil)
 			{
-				this.cardType = cardType;
+				this.cardSigil = cardSigil;
+			}
+
+		public String getCardTribe()
+			{
+				return cardTribe;
+			}
+
+		public void setCardTribe(String cardTribe)
+			{
+				this.cardTribe = cardTribe;
 			}
 
 		public String getCardName()
