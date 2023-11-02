@@ -3,23 +3,6 @@ import java.util.Collections;
 
 public class Deck
 	{
-//		private ArrayList<Card> deckType;
-//
-//		Deck(ArrayList<Card> d)
-//			{
-//				setDeckType(d);
-//			}
-//
-//		public ArrayList<Card> getDeckType()
-//			{
-//				return deckType;
-//			}
-//
-//		public void setDeckType(ArrayList<Card> deckType)
-//			{
-//				this.deckType = deckType;
-//			}
-
 		// arraylist of cards, pre-set decks
 		static ArrayList<Card> allCard = new ArrayList<Card>();
 
@@ -41,9 +24,6 @@ public class Deck
 		static ArrayList<Card> rewardOneBone = new ArrayList<Card>();
 		static ArrayList<Card> rewardTwoBone = new ArrayList<Card>();
 		static ArrayList<Card> rewardThreeBone = new ArrayList<Card>();
-
-		// (int health, int power, int bloodCost, int boneCost, String sigil,
-		// String type, String name)
 
 		public static void fillAllCard()
 			{
@@ -100,7 +80,15 @@ public class Deck
 					}
 			}
 
-		public static void fillStagnantStarterDeck()
+		public static void clearSquirrelDeck()
+			{
+				for (int i = squirrelDeck.size(); i > 0; i--)
+					{
+						squirrelDeck.remove(i);
+					}
+			}
+
+		public static void fillStagnantPlayerDeck()
 			{
 				stagnantPlayerDeck.add(allCard.get(8));
 				stagnantPlayerDeck.add(allCard.get(35));
@@ -108,11 +96,19 @@ public class Deck
 				stagnantPlayerDeck.add(allCard.get(26));
 			}
 
-		public static void fillStarterDeck()
+		public static void fillPlayerDeck()
 			{
 				for (int i = 0; i < stagnantPlayerDeck.size(); i++)
 					{
 						playerDeck.add(stagnantPlayerDeck.get(i));
+					}
+			}
+
+		public static void clearPlayerDeck()
+			{
+				for (int i = playerDeck.size(); i > 0; i--)
+					{
+						playerDeck.remove(i);
 					}
 			}
 
