@@ -6,7 +6,9 @@ public class PlayGame
 			{
 				oneTimeSettingUpHand();
 				settingUpHand();
-				playMap();
+				//playMap();
+				Board.prepareBoard();
+				Board.displayBoard();
 			}
 
 		public static void oneTimeSettingUpHand()
