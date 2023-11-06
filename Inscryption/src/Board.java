@@ -11,16 +11,23 @@ public class Board
 						for (int col = 0; col < board[0].length; col++)
 							{
 								board[row][col] = null;
-								// board[row][col] = Deck.playerDeck.get(0);
 							}
 					}
 				// board[0][0] = Deck.playerDeck.get(0);
+				// board[0][3] = Deck.playerDeck.get(0);
+				// board[2][0] = Deck.playerDeck.get(0);
 			}
 
 		public static void displayBoard()
 			{
 				placeArrowBoard();
 				placeOpponentBoard();
+				for (int i = 0; i < 2; i++)
+					{
+						System.out.println();
+					}
+				placePlayerBoard();
+				playBoard();
 			}
 
 		public static void playBoard()
@@ -42,10 +49,11 @@ public class Board
 							}
 						else
 							{
-								arrowCard[i] = arrowCard[0] = Deck.playerDeck.get(0).getCardName();
-								arrowCard[i + 4] = "                ";
-								arrowCard[i + 8] = "                ";
-								arrowCard[i + 12] = "                ";
+								arrowCard[i] = board[0][i].getCardName();
+								arrowCard[i + 4] = "________________";
+								arrowCard[i + 8] = "            " + board[0][i].getCardBloodCost() + "C  ";
+								arrowCard[i + 12] = "  " + board[0][i].getCardPower() + "P        "
+										+ board[0][i].getCardHealth() + "H  ";
 							}
 					}
 
@@ -83,19 +91,18 @@ public class Board
 							}
 						else
 							{
-								opponentBoard[i] = Deck.playerDeck.get(i).getCardName();
+								opponentBoard[i] = board[1][i].getCardName();
 
 								opponentBoard[i + 4] = "________________";
-								opponentBoard[i + 8] = "            " + Deck.playerDeck.get(i).getCardBloodCost()
-										+ "C  ";
+								opponentBoard[i + 8] = "            " + board[1][i].getCardBloodCost() + "C  ";
 								opponentBoard[i + 12] = "                ";
 								opponentBoard[i + 16] = "                ";
 								opponentBoard[i + 20] = "                ";
 								opponentBoard[i + 24] = "                ";
 								opponentBoard[i + 28] = "                ";
 								opponentBoard[i + 32] = "________________";
-								opponentBoard[i + 36] = "  " + Deck.playerDeck.get(i).getCardPower() + "P        "
-										+ Deck.playerDeck.get(i).getCardHealth() + "H  ";
+								opponentBoard[i + 36] = "  " + board[1][i].getCardPower() + "P        "
+										+ board[1][i].getCardHealth() + "H  ";
 							}
 					}
 				System.out.println(
@@ -120,6 +127,66 @@ public class Board
 						+ opponentBoard[34] + " |    |" + opponentBoard[35] + " | ");
 				System.out.println("  |" + opponentBoard[36] + " |    |" + opponentBoard[37] + " |    |"
 						+ opponentBoard[38] + " |    |" + opponentBoard[39] + " | ");
+				System.out.println(
+						"  '-----------------'    '-----------------'    '-----------------'    '-----------------'  ");
+			}
+
+		public static void placePlayerBoard()
+			{
+				String playerBoard[] = new String[40];
+				for (int i = 0; i < 4; i++)
+					{
+						if (board[2][i] == null)
+							{
+								playerBoard[i] = "                ";
+								playerBoard[i + 4] = "                ";
+								playerBoard[i + 8] = "                ";
+								playerBoard[i + 12] = "                ";
+								playerBoard[i + 16] = "                ";
+								playerBoard[i + 20] = "                ";
+								playerBoard[i + 24] = "                ";
+								playerBoard[i + 28] = "                ";
+								playerBoard[i + 32] = "                ";
+								playerBoard[i + 36] = "                ";
+							}
+						else
+							{
+								playerBoard[i] = board[2][i].getCardName();
+
+								playerBoard[i + 4] = "________________";
+								playerBoard[i + 8] = "            " + board[2][i].getCardBloodCost() + "C  ";
+								playerBoard[i + 12] = "                ";
+								playerBoard[i + 16] = "                ";
+								playerBoard[i + 20] = "                ";
+								playerBoard[i + 24] = "                ";
+								playerBoard[i + 28] = "                ";
+								playerBoard[i + 32] = "________________";
+								playerBoard[i + 36] = "  " + board[2][i].getCardPower() + "P        "
+										+ board[2][i].getCardHealth() + "H  ";
+							}
+					}
+				System.out.println(
+						"  ,-----------------,    ,-----------------,    ,-----------------,    ,-----------------,  ");
+				System.out.println("  |" + playerBoard[0] + " |    |" + playerBoard[1] + " |    |" + playerBoard[2]
+						+ " |    |" + playerBoard[3] + " | ");
+				System.out.println("  |" + playerBoard[4] + " |    |" + playerBoard[5] + " |    |" + playerBoard[6]
+						+ " |    |" + playerBoard[7] + " | ");
+				System.out.println("  |" + playerBoard[8] + " |    |" + playerBoard[9] + " |    |" + playerBoard[10]
+						+ " |    |" + playerBoard[11] + " |  ");
+				System.out.println("  |" + playerBoard[12] + " |    |" + playerBoard[13] + " |    |" + playerBoard[14]
+						+ " |    |" + playerBoard[15] + " | ");
+				System.out.println("  |" + playerBoard[16] + " |    |" + playerBoard[17] + " |    |" + playerBoard[18]
+						+ " |    |" + playerBoard[19] + " | ");
+				System.out.println("  |" + playerBoard[20] + " |    |" + playerBoard[21] + " |    |" + playerBoard[22]
+						+ " |    |" + playerBoard[23] + " | ");
+				System.out.println("  |" + playerBoard[24] + " |    |" + playerBoard[25] + " |    |" + playerBoard[26]
+						+ " |    |" + playerBoard[27] + " | ");
+				System.out.println("  |" + playerBoard[28] + " |    |" + playerBoard[29] + " |    |" + playerBoard[30]
+						+ " |    |" + playerBoard[31] + " | ");
+				System.out.println("  |" + playerBoard[32] + " |    |" + playerBoard[33] + " |    |" + playerBoard[34]
+						+ " |    |" + playerBoard[35] + " | ");
+				System.out.println("  |" + playerBoard[36] + " |    |" + playerBoard[37] + " |    |" + playerBoard[38]
+						+ " |    |" + playerBoard[39] + " | ");
 				System.out.println(
 						"  '-----------------'    '-----------------'    '-----------------'    '-----------------'  ");
 			}
