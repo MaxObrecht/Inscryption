@@ -17,6 +17,7 @@ public class Deck
 
 		static ArrayList<Card> stagnantPlayerDeck = new ArrayList<Card>();
 		static ArrayList<Card> playerDeck = new ArrayList<Card>();
+		static ArrayList<Card> opponentDeck = new ArrayList<Card>();
 
 		static ArrayList<Card> rewardOneBlood = new ArrayList<Card>();
 		static ArrayList<Card> rewardTwoBlood = new ArrayList<Card>();
@@ -27,6 +28,7 @@ public class Deck
 
 		public static void fillAllCard()
 			{
+				// health, attack, cost, cost
 				// Avian down 0-5
 				allCard.add(new Card(1, 1, 1, 0, "swimAndFly", "avian", "   KINGFISHER   "));
 				allCard.add(new Card(2, 0, 1, 0, "grow", "avian", "   RAVEN EGG    "));
@@ -117,14 +119,14 @@ public class Deck
 
 			}
 
-		public static void fillStagnantOpponentDeck()
-			{
-
-			}
-
 		public static void fillOpponentDeck()
 			{
-
+				for (int i = 0; i < 4; i++)
+					{
+						//elk fawn
+						opponentDeck.add(allCard.get(13));
+					}
+				
 			}
 
 //		public static void shuffle()
