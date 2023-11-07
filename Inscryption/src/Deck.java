@@ -125,6 +125,7 @@ public class Deck
 					{
 						//elk fawn
 						opponentDeck.add(allCard.get(13));
+						//Git-Time Baby
 					}
 				
 			}
