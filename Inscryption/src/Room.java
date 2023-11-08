@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Room
 	{
@@ -26,7 +27,17 @@ public class Room
 
 		public static void opponentRoom()
 			{
-				System.out.println("a");
+				boolean round = true;
+				
+				Deck.fillOpponentDeck();
+				Deck.settingUpHand();
+
+				while (round)
+					{
+						opponentMove();
+						Board.setBoard();
+						playerMove();
+					}
 			}
 
 		public static void campfireRoom()
@@ -37,6 +48,20 @@ public class Room
 		public static void rewardRoom()
 			{
 				System.out.println("c");
+			}
+
+		public static void opponentMove()
+			{
+				Board.board[0][0] = Deck.opponentDeck.get(0);
+			}
+
+		public static void playerMove()
+			{
+				Scanner userIntInput = new Scanner(System.in);
+
+				System.out.println("How");
+				int place = userIntInput.nextInt();
+				System.out.println(place);
 			}
 
 	}

@@ -41,4 +41,10 @@ public class Map
 					}
 			}
 
+		public static void playMap()
+			{
+				Map.fillMap();
+				Room.allRoom();
+			}
+
 	}

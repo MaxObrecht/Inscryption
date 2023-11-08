@@ -5,10 +5,11 @@ public class PlayGame
 		public static void main(String[] args)
 			{
 				oneTimeSettingUpHand();
-				settingUpHand();
-				//playMap();
-				Board.prepareBoard();
-				Board.displayBoard();
+				Player.setPlayer();
+				Map.playMap();
+				Room.opponentRoom();
+				// test();
+
 			}
 
 		public static void oneTimeSettingUpHand()
@@ -17,16 +18,15 @@ public class PlayGame
 				Deck.fillStagnantPlayerDeck();
 			}
 
-		public static void settingUpHand()
-			{
-				Deck.fillSquirrelDeck();
-				Deck.fillPlayerDeck();
-			}
+		
+		
 
-		public static void playMap()
+		public static void test()
 			{
-				Map.fillMap();
-				Room.allRoom();
+				for (int i = 0; i < Deck.opponentDeck.size(); i++)
+					{
+						System.out.println(Deck.opponentDeck.get(i).getCardName());
+					}
 			}
 
 	}

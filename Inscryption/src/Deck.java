@@ -114,6 +114,12 @@ public class Deck
 					}
 			}
 
+		public static void settingUpHand()
+			{
+				Deck.fillSquirrelDeck();
+				Deck.fillPlayerDeck();
+			}
+
 		public static void fillStagnantRewardOneBlood()
 			{
 
@@ -121,13 +127,27 @@ public class Deck
 
 		public static void fillOpponentDeck()
 			{
+				OpponentDeckOne();
+			}
+
+		public static void OpponentDeckOne()
+			{
 				for (int i = 0; i < 4; i++)
 					{
-						//elk fawn
+						// elk fawn
 						opponentDeck.add(allCard.get(13));
-						//Git-Time Baby
 					}
-				
+				for (int i = 0; i < 3; i++)
+					{
+						// wolf
+						opponentDeck.add(allCard.get(8));
+					}
+				for (int i = 0; i < 3; i++)
+					{
+						// bullfrog
+						opponentDeck.add(allCard.get(26));
+					}
+				Collections.shuffle(opponentDeck);
 			}
 
 //		public static void shuffle()
