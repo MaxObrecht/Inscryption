@@ -68,12 +68,12 @@ public class Player
 				this.scale = scale;
 			}
 
-		static ArrayList<Player> people = new ArrayList<Player>();
+		//static ArrayList<Player> people = new ArrayList<Player>();
 
-		public static void setPlayer()
-			{
-				people.add(new Player(Deck.playerDeck, null, null, 3, 0));
-				people.add(new Player(Deck.opponentDeck, null, null, 0, 0));
-			}
+//		public static void setPlayers()
+//			{
+//				Player playerOne = new Player(Deck.playerDeck, null, null, 3, 0);
+//				Player opponentOne = new Player(Deck.opponentDeck, null, null, 0, 0);
+//			}
 
 	}

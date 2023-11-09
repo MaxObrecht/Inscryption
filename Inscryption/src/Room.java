@@ -31,11 +31,12 @@ public class Room
 				
 				Deck.fillOpponentDeck();
 				Deck.settingUpHand();
+				Board.prepareBoard();
 
 				while (round)
 					{
 						opponentMove();
-						Board.setBoard();
+						Board.displayBoard();
 						playerMove();
 					}
 			}
@@ -61,7 +62,6 @@ public class Room
 
 				System.out.println("How");
 				int place = userIntInput.nextInt();
-				System.out.println(place);
 			}
 
 	}

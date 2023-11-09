@@ -116,8 +116,8 @@ public class Deck
 
 		public static void settingUpHand()
 			{
-				Deck.fillSquirrelDeck();
-				Deck.fillPlayerDeck();
+				fillSquirrelDeck();
+				fillPlayerDeck();
 			}
 
 		public static void fillStagnantRewardOneBlood()

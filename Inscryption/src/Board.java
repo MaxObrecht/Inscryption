@@ -27,12 +27,6 @@ public class Board
 						System.out.println();
 					}
 				placePlayerBoard();
-				playBoard();
-			}
-
-		public static void playBoard()
-			{
-				
 			}
 
 		public static void placeArrowBoard()
@@ -190,10 +184,4 @@ public class Board
 				System.out.println(
 						"  '-----------------'    '-----------------'    '-----------------'    '-----------------'  ");
 			}
-		public static void setBoard()
-			{
-				prepareBoard();
-				displayBoard();
-			}
-
 	}
