@@ -184,4 +184,10 @@ public class Board
 				System.out.println(
 						"  '-----------------'    '-----------------'    '-----------------'    '-----------------'  ");
 			}
+		public static void setBoard()
+			{
+				prepareBoard();
+				displayBoard();
+			}
+
 	}

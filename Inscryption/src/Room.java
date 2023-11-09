@@ -28,8 +28,11 @@ public class Room
 		public static void opponentRoom()
 			{
 				boolean round = true;
-				
+
 				Deck.fillOpponentDeck();
+				Deck.fillStagnantPlayerDeck();
+				Deck.fillPlayerDeck();
+				Deck.fillSquirrelDeck();
 				Deck.settingUpHand();
 				Board.prepareBoard();
 
@@ -53,15 +56,60 @@ public class Room
 
 		public static void opponentMove()
 			{
-				Board.board[0][0] = Deck.opponentDeck.get(0);
+				int randomOpponentCard = (int) (Math.random() * Deck.opponentDeck.size());
+				int randCol = (int) (Math.random() * 4);
+				if (Deck.opponentDeck.size() > 0)
+					{
+						if (Board.board[0][randCol] == null)
+							{
+								Board.board[0][randCol] = Deck.opponentDeck.get(randomOpponentCard);
+								Deck.opponentDeck.remove(randomOpponentCard);
+							}
+						else if (Board.board[0][randCol] != null && Board.board[1][randCol] == null)
+							{
+								Board.board[1][randCol] = Board.board[0][randCol];
+								Board.board[0][randCol] = Deck.opponentDeck.get(randomOpponentCard);
+								Deck.opponentDeck.remove(randomOpponentCard);
+							}
+						else if (Board.board[0][0] != null && Board.board[0][1] != null && Board.board[0][2] != null
+								&& Board.board[0][3] != null && Board.board[1][0] != null && Board.board[1][1] != null
+								&& Board.board[1][2] != null && Board.board[1][3] != null)
+							{
+
+							}
+						else
+							{
+								opponentMove();
+							}
+					}
+				else
+					{
+
+					}
+
 			}
 
 		public static void playerMove()
 			{
 				Scanner userIntInput = new Scanner(System.in);
 
-				System.out.println("How");
-				int place = userIntInput.nextInt();
+				System.out.println("Do you draw from your creatures (1), or draw a squirrel (2)");
+				int deckChoice = userIntInput.nextInt();
+				if (deckChoice == 1)
+					{
+						Deck.playerHand.add(Deck.playerDeck.get(0));
+						Deck.playerDeck.remove(0);
+					}
+				else if (deckChoice == 2)
+					{
+						Deck.playerHand.add(Deck.squirrelDeck.get(0));
+						Deck.squirrelDeck.remove(0);
+					}
+				else
+					{
+						playerMove();
+					}
+				Deck.showHand();
 			}
 
 	}

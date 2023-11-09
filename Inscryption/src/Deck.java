@@ -17,6 +17,7 @@ public class Deck
 
 		static ArrayList<Card> stagnantPlayerDeck = new ArrayList<Card>();
 		static ArrayList<Card> playerDeck = new ArrayList<Card>();
+		static ArrayList<Card> playerHand = new ArrayList<Card>();
 		static ArrayList<Card> opponentDeck = new ArrayList<Card>();
 
 		static ArrayList<Card> rewardOneBlood = new ArrayList<Card>();
@@ -104,6 +105,7 @@ public class Deck
 					{
 						playerDeck.add(stagnantPlayerDeck.get(i));
 					}
+				Collections.shuffle(playerDeck);
 			}
 
 		public static void clearPlayerDeck()
@@ -120,6 +122,17 @@ public class Deck
 				fillPlayerDeck();
 			}
 
+		public static void showHand()
+			{
+				int counter = 1;
+				System.out.println("Your hand: ");
+				for (int i = 0; i < playerDeck.size(); i++)
+					{
+						System.out.println(counter + ". " + playerDeck.get(i).getCardName() + playerDeck.get(i).getCardBloodCost());
+						counter = counter++;
+					}
+			}
+
 		public static void fillStagnantRewardOneBlood()
 			{
 
@@ -132,17 +145,17 @@ public class Deck
 
 		public static void OpponentDeckOne()
 			{
-				for (int i = 0; i < 4; i++)
+				for (int i = 0; i < 3; i++)
 					{
 						// elk fawn
 						opponentDeck.add(allCard.get(13));
 					}
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 4; i++)
 					{
 						// wolf
 						opponentDeck.add(allCard.get(8));
 					}
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 2; i++)
 					{
 						// bullfrog
 						opponentDeck.add(allCard.get(26));
