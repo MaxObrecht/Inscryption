@@ -30,11 +30,18 @@ public class Room
 				boolean round = true;
 
 				Deck.fillOpponentDeck();
-				Deck.fillStagnantPlayerDeck();
 				Deck.fillPlayerDeck();
 				Deck.fillSquirrelDeck();
-				Deck.settingUpHand();
+				// Deck.settingUpHand();
 				Board.prepareBoard();
+				for (int i = 0; i < 3; i++)
+					{
+						Deck.playerHand.add(Deck.playerDeck.get(0));
+						Deck.playerDeck.remove(0);
+					}
+				Deck.playerHand.add(Deck.squirrelDeck.get(0));
+				Deck.squirrelDeck.remove(0);
+				Deck.showHand();
 
 				while (round)
 					{
@@ -91,25 +98,44 @@ public class Room
 
 		public static void playerMove()
 			{
+				
+				
 				Scanner userIntInput = new Scanner(System.in);
 
 				System.out.println("Do you draw from your creatures (1), or draw a squirrel (2)");
 				int deckChoice = userIntInput.nextInt();
-				if (deckChoice == 1)
+				if (deckChoice == 1 && Deck.playerHand.size() > 0)
 					{
 						Deck.playerHand.add(Deck.playerDeck.get(0));
 						Deck.playerDeck.remove(0);
 					}
-				else if (deckChoice == 2)
+				else if (deckChoice == 2 && Deck.squirrelDeck.size() > 0)
 					{
 						Deck.playerHand.add(Deck.squirrelDeck.get(0));
 						Deck.squirrelDeck.remove(0);
+					}
+				else if (deckChoice == 1 || deckChoice == 2 && ) //last working here
+				else if (deckChoice == 1 && Deck.playerHand.size() < 1)
+					{
+						System.out.println("Out of cards");
+						playerMove();
+					}
+				else if (deckChoice == 2 && Deck.squirrelDeck.size() < 1)
+					{
+						System.out.println("Out of cards");
+						playerMove();
 					}
 				else
 					{
 						playerMove();
 					}
 				Deck.showHand();
+				
+				System.out.println("What do you want to place?");
+				int cardChoice = userIntInput.nextInt();
+				
+				System.out.println("Where do you want to place it? (1-4)");
+				int placeChoice = userIntInput.nextInt();
 			}
 
 	}

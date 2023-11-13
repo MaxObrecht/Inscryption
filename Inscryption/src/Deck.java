@@ -126,10 +126,10 @@ public class Deck
 			{
 				int counter = 1;
 				System.out.println("Your hand: ");
-				for (int i = 0; i < playerDeck.size(); i++)
+				for (int i = 0; i < playerHand.size(); i++)
 					{
-						System.out.println(counter + ". " + playerDeck.get(i).getCardName() + playerDeck.get(i).getCardBloodCost());
-						counter = counter++;
+						System.out.println(counter + ". " + playerHand.get(i).getCardName() + playerHand.get(i).getCardBloodCost());
+						counter = counter + 1;
 					}
 			}
 
