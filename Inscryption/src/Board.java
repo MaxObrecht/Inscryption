@@ -27,6 +27,7 @@ public class Board
 						System.out.println();
 					}
 				placePlayerBoard();
+				scaleCheck();
 			}
 
 		public static void placeArrowBoard()
@@ -184,10 +185,20 @@ public class Board
 				System.out.println(
 						"  '-----------------'    '-----------------'    '-----------------'    '-----------------'  ");
 			}
+
 		public static void setBoard()
 			{
 				prepareBoard();
 				displayBoard();
 			}
+		
+		public static void scaleCheck()
+		{
+			System.out.println();
+			System.out.println("------------------------------------------------------------------------------------------");
+			System.out.println("SCALE: " + Player.people.get(0).getScale());
+			System.out.println("------------------------------------------------------------------------------------------");
+			
+		}
 
 	}

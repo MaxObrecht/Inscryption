@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Room
 	{
 //type (opponent, shop, campfire, etc.)-- run method based on type
+		static Scanner userIntInput = new Scanner(System.in);
 
 		public static void allRoom()
 			{
@@ -28,7 +29,7 @@ public class Room
 		public static void opponentRoom()
 			{
 				boolean round = true;
-
+				Player.setPlayers();
 				Deck.fillOpponentDeck();
 				Deck.fillPlayerDeck();
 				Deck.fillSquirrelDeck();
@@ -47,7 +48,11 @@ public class Room
 					{
 						opponentMove();
 						Board.displayBoard();
-						playerMove();
+						playerDraw();
+						playerPlace();
+						Board.displayBoard();
+						attack();
+						opponentCardDrop();
 					}
 			}
 
@@ -89,22 +94,30 @@ public class Room
 								opponentMove();
 							}
 					}
-				else
-					{
-
-					}
 
 			}
 
-		public static void playerMove()
+		public static void playerDraw()
 			{
-				
-				
-				Scanner userIntInput = new Scanner(System.in);
 
 				System.out.println("Do you draw from your creatures (1), or draw a squirrel (2)");
 				int deckChoice = userIntInput.nextInt();
-				if (deckChoice == 1 && Deck.playerHand.size() > 0)
+				if (deckChoice == 1 && Deck.playerDeck.size() < 1)
+					{
+						System.out.println("Out of cards");
+						playerDraw();
+					}
+				else if (deckChoice == 2 && Deck.squirrelDeck.size() < 1)
+					{
+						System.out.println("Out of cards");
+						playerDraw();
+					}
+				else if (deckChoice == 1 && Deck.playerDeck.size() < 1 && deckChoice == 2
+						&& Deck.squirrelDeck.size() < 1)
+					{
+						System.out.println("Out of cards");
+					}
+				else if (deckChoice == 1 && Deck.playerHand.size() > 0)
 					{
 						Deck.playerHand.add(Deck.playerDeck.get(0));
 						Deck.playerDeck.remove(0);
@@ -114,28 +127,91 @@ public class Room
 						Deck.playerHand.add(Deck.squirrelDeck.get(0));
 						Deck.squirrelDeck.remove(0);
 					}
-				else if (deckChoice == 1 || deckChoice == 2 && ) //last working here
-				else if (deckChoice == 1 && Deck.playerHand.size() < 1)
+				else
 					{
-						System.out.println("Out of cards");
-						playerMove();
+						playerDraw();
 					}
-				else if (deckChoice == 2 && Deck.squirrelDeck.size() < 1)
+				Deck.showHand();
+
+			}
+
+		public static void playerPlace()
+			{
+				if (Deck.playerHand.size() > 0)
 					{
-						System.out.println("Out of cards");
-						playerMove();
+						System.out.println("What do you want to place?");
+						int cardChoice = userIntInput.nextInt();
+
+						System.out.println("Where do you want to place it? (1-4)");
+						int placeChoice = userIntInput.nextInt();
+
+						if (Board.board[2][placeChoice - 1] == null)
+							{
+								Board.board[2][placeChoice - 1] = Deck.playerHand.get(cardChoice - 1);
+								Deck.playerHand.remove(cardChoice - 1);
+							}
+						else
+							{
+								System.out.println("Can't place there");
+								playerPlace();
+							}
 					}
 				else
 					{
-						playerMove();
+						System.out.println("There is nothing to play");
 					}
-				Deck.showHand();
-				
-				System.out.println("What do you want to place?");
-				int cardChoice = userIntInput.nextInt();
-				
-				System.out.println("Where do you want to place it? (1-4)");
-				int placeChoice = userIntInput.nextInt();
+			}
+
+		public static void attack()
+			{
+				for (int i = 0; i < 4; i++)
+					{
+						if (Board.board[2][i] != null)
+							{
+								if (Board.board[1][i] == null)
+									{
+										Player.people.get(0).setScale(
+												Player.people.get(0).getScale() + Board.board[2][i].getCardPower());
+									}
+								else
+									{
+										Board.board[1][i].setCardHealth(Board.board[1][i].getCardHealth() - Board.board[2][i].getCardPower());
+										if (Board.board[1][i].getCardHealth() == 0)
+											{
+												Board.board[1][i] = null;
+											}
+									}
+							}
+						
+						if (Board.board[1][i] != null)
+							{
+								if (Board.board[2][i] == null)
+									{
+										Player.people.get(0).setScale(
+												Player.people.get(0).getScale() - Board.board[1][i].getCardPower());
+									}
+								else
+									{
+										Board.board[2][i].setCardHealth(Board.board[2][i].getCardHealth() - Board.board[1][i].getCardPower());
+										if (Board.board[2][i].getCardHealth() == 0)
+											{
+												Board.board[2][i] = null;
+											}
+									}
+							}
+					}
+			}
+
+		public static void opponentCardDrop()
+			{
+				for (int i = 0; i < 4; i++)
+					{
+						if (Board.board[0][i] != null && Board.board[1][i] == null)
+							{
+								Board.board[1][i] = Board.board[0][i];
+								Board.board[0][i] = null;
+							}
+					}
 			}
 
 	}

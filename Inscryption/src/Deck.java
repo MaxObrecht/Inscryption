@@ -128,7 +128,8 @@ public class Deck
 				System.out.println("Your hand: ");
 				for (int i = 0; i < playerHand.size(); i++)
 					{
-						System.out.println(counter + ". " + playerHand.get(i).getCardName() + playerHand.get(i).getCardBloodCost());
+						System.out.println(counter + ". " + playerHand.get(i).getCardName()
+								+ playerHand.get(i).getCardBloodCost());
 						counter = counter + 1;
 					}
 			}

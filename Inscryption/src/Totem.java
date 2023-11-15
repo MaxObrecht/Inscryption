@@ -30,5 +30,6 @@ public class Totem
 			{
 				this.totemAttribute = totemAttribute;
 			}
-		//methods where when there is both a type and attribute, then an attribute applies to a card type
+		// methods where when there is both a type and attribute, then an attribute
+		// applies to a card type
 	}
