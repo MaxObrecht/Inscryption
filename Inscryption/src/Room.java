@@ -251,7 +251,7 @@ public class Room
 									{
 										Board.board[2][i].setCardHealth(
 												Board.board[2][i].getCardHealth() - Board.board[1][i].getCardPower());
-										if (Board.board[2][i].getCardHealth() == 0)
+										if (Board.board[2][i].getCardHealth() < 1)
 											{
 												Board.board[2][i] = null;
 											}

@@ -16,9 +16,11 @@ public class Deck
 		static ArrayList<Card> squirrelDeck = new ArrayList<Card>();
 
 		static ArrayList<Card> stagnantPlayerDeck = new ArrayList<Card>();
+		static ArrayList<Integer> stagnantPlayerDeckInt = new ArrayList<Integer>();
 		static ArrayList<Card> playerDeck = new ArrayList<Card>();
 		static ArrayList<Card> playerHand = new ArrayList<Card>();
 		static ArrayList<Card> opponentDeck = new ArrayList<Card>();
+		static ArrayList<Integer> preOpponentDeck = new ArrayList<Integer>();
 
 		static ArrayList<Card> rewardOneBlood = new ArrayList<Card>();
 		static ArrayList<Card> rewardTwoBlood = new ArrayList<Card>();
@@ -93,27 +95,41 @@ public class Deck
 
 		public static void fillStagnantPlayerDeck()
 			{
-				stagnantPlayerDeck.add(new Card(allCard.get(8).getCardHealth(), allCard.get(8).getCardPower(), allCard.get(8).getCardBloodCost(), allCard.get(8).getCardBoneCost(), allCard.get(8).getCardSigil(), allCard.get(8).getCardTribe(), allCard.get(8).getCardName())); //add the rest
-				// idea for a way to do this en masse stagnantPlayerDeck.add(new Card(allCard.get(a).getCardHealth(); allCard.get(a).getCardAttack... a is switched if it is a wolf or something else
-				//stagnantPlayerDeck.add(allCard.get(8));
-				stagnantPlayerDeck.add(allCard.get(35));
-				stagnantPlayerDeck.add(allCard.get(34));
-				stagnantPlayerDeck.add(allCard.get(26));
-			}
-		
-//		public static void fillStagnantPlayerDeck2()
-//			{
-//				stagnantPlayerDeck.add(new Card(allCard.get(8)));
+				// stagnantPlayerDeck.add(new Card(allCard.get(8).getCardHealth(),
+				// allCard.get(8).getCardPower(), allCard.get(8).getCardBloodCost(),
+				// allCard.get(8).getCardBoneCost(), allCard.get(8).getCardSigil(),
+				// allCard.get(8).getCardTribe(), allCard.get(8).getCardName())); //add the rest
+				// idea for a way to do this en masse stagnantPlayerDeck.add(new
+				// Card(allCard.get(a).getCardHealth(); allCard.get(a).getCardAttack... a is
+				// switched if it is a wolf or something else
+
+//				stagnantPlayerDeck.add(allCard.get(8));
 //				stagnantPlayerDeck.add(allCard.get(35));
 //				stagnantPlayerDeck.add(allCard.get(34));
 //				stagnantPlayerDeck.add(allCard.get(26));
-//			}
+
+				stagnantPlayerDeckInt.add(8);
+				stagnantPlayerDeckInt.add(35);
+				stagnantPlayerDeckInt.add(34);
+				stagnantPlayerDeckInt.add(26);
+			}
 
 		public static void fillPlayerDeck()
 			{
-				for (int i = 0; i < stagnantPlayerDeck.size(); i++)
+//				for (int i = 0; i < stagnantPlayerDeck.size(); i++)
+//					{
+//						playerDeck.add(stagnantPlayerDeck.get(i));
+//					}
+
+				for (int i = 0; i < stagnantPlayerDeckInt.size(); i++)
 					{
-						playerDeck.add(stagnantPlayerDeck.get(i));
+						playerDeck.add(new Card(allCard.get(stagnantPlayerDeckInt.get(i)).getCardHealth(),
+								allCard.get(stagnantPlayerDeckInt.get(i)).getCardPower(),
+								allCard.get(stagnantPlayerDeckInt.get(i)).getCardBloodCost(),
+								allCard.get(stagnantPlayerDeckInt.get(i)).getCardBoneCost(),
+								allCard.get(stagnantPlayerDeckInt.get(i)).getCardSigil(),
+								allCard.get(stagnantPlayerDeckInt.get(i)).getCardTribe(),
+								allCard.get(stagnantPlayerDeckInt.get(i)).getCardName()));
 					}
 				Collections.shuffle(playerDeck);
 			}
@@ -152,26 +168,45 @@ public class Deck
 		public static void fillOpponentDeck()
 			{
 				OpponentDeckOne();
+
+				for (int i = 0; i < preOpponentDeck.size(); i++)
+					{
+						opponentDeck.add(new Card(allCard.get(preOpponentDeck.get(i)).getCardHealth(),
+								allCard.get(preOpponentDeck.get(i)).getCardPower(),
+								allCard.get(preOpponentDeck.get(i)).getCardBloodCost(),
+								allCard.get(preOpponentDeck.get(i)).getCardBoneCost(),
+								allCard.get(preOpponentDeck.get(i)).getCardSigil(),
+								allCard.get(preOpponentDeck.get(i)).getCardTribe(),
+								allCard.get(preOpponentDeck.get(i)).getCardName()));
+					}
+				Collections.shuffle(opponentDeck);
+
 			}
 
 		public static void OpponentDeckOne()
 			{
-				for (int i = 0; i < 1; i++)
-					{
-						// elk fawn
-						opponentDeck.add(allCard.get(13));
-					}
-				for (int i = 0; i < 2; i++)
-					{
-						// wolf
-						opponentDeck.add(allCard.get(8));
-					}
-				for (int i = 0; i < 2; i++)
-					{
-						// bullfrog
-						opponentDeck.add(allCard.get(26));
-					}
-				Collections.shuffle(opponentDeck);
+//				for (int i = 0; i < 1; i++)
+//					{
+//						// elk fawn
+//						opponentDeck.add(allCard.get(13));
+//					}
+//				for (int i = 0; i < 2; i++)
+//					{
+//						// wolf
+//						opponentDeck.add(allCard.get(8));
+//					}
+//				for (int i = 0; i < 2; i++)
+//					{
+//						// bullfrog
+//						opponentDeck.add(allCard.get(26));
+//					}
+
+				preOpponentDeck.add(13);
+				preOpponentDeck.add(8);
+				preOpponentDeck.add(8);
+				preOpponentDeck.add(26);
+				preOpponentDeck.add(26);
+
 			}
 
 //		public static void shuffle()
