@@ -4,10 +4,10 @@ public class Room
 	{
 //type (opponent, shop, campfire, etc.)-- run method based on type
 		static Scanner userIntInput = new Scanner(System.in);
+		static Scanner userStringInput = new Scanner(System.in);
 
 		public static void allRoom()
 			{
-				// int position = 0;
 				for (int i = 0; i < Map.map.size(); i++)
 					{
 						if (Map.map.get(i).equals("opponent"))
@@ -33,7 +33,6 @@ public class Room
 				Deck.fillOpponentDeck();
 				Deck.fillPlayerDeck();
 				Deck.fillSquirrelDeck();
-				// Deck.settingUpHand();
 				Board.prepareBoard();
 				for (int i = 0; i < 3; i++)
 					{
@@ -47,9 +46,12 @@ public class Room
 				while (round)
 					{
 						opponentMove();
+						Board.screenWipe();
+						Deck.showHand();
 						Board.displayBoard();
 						playerDraw();
 						playerPlace();
+						Board.screenWipe();
 						Board.displayBoard();
 						attack();
 						opponentCardDrop();
@@ -137,33 +139,84 @@ public class Room
 
 		public static void playerPlace()
 			{
-				if (Deck.playerHand.size() > 0)
+				boolean placing = true;
+				while (placing)
 					{
-						System.out.println("What do you want to place?");
-						int cardChoice = userIntInput.nextInt();
-
-						System.out.println("Where do you want to place it? (1-4)");
-						int placeChoice = userIntInput.nextInt();
-
-						if (Board.board[2][placeChoice - 1] == null)
+						if (Deck.playerHand.size() > 0)
 							{
-								Board.board[2][placeChoice - 1] = Deck.playerHand.get(cardChoice - 1);
-								Deck.playerHand.remove(cardChoice - 1);
+								System.out.println("Do you want to play a card? (y/n)");
+								String playACard = userStringInput.nextLine();
+
+								if (playACard.equalsIgnoreCase("y"))
+									{
+										System.out.println("What do you want to place?");
+										int cardChoice = userIntInput.nextInt();
+
+										if (Deck.playerHand.get(cardChoice - 1).getCardBloodCost() > 0)
+											{
+												for (int i = 0; i < Deck.playerHand.get(cardChoice - 1)
+														.getCardBloodCost(); i++)
+													{
+														System.out.println(
+																"What card do you sacrifice? (1-4) (5 to leave)");
+														int cardSacrifice = userIntInput.nextInt();
+
+														if (cardSacrifice < 5)
+															{
+																Board.board[2][cardSacrifice - 1] = null;
+															}
+														else
+															{
+																playerPlace();
+															}
+													}
+											}
+
+										System.out.println("Where do you want to place it? (1-4)");
+										int placeChoice = userIntInput.nextInt();
+
+										if (Board.board[2][placeChoice - 1] == null)
+											{
+												Board.board[2][placeChoice - 1] = Deck.playerHand.get(cardChoice - 1);
+												Deck.playerHand.remove(cardChoice - 1);
+											}
+										else
+											{
+												System.out.println("Can't place there");
+												playerPlace();
+
+											}
+
+									}
 							}
 						else
 							{
-								System.out.println("Can't place there");
-								playerPlace();
+								System.out.println("There is nothing to play");
 							}
+
+						Board.screenWipe();
+						Board.displayBoard();
+
+						System.out.println("End turn? (y/n)");
+						String endGame = userStringInput.nextLine();
+
+						if (endGame.equalsIgnoreCase("y"))
+							{
+								placing = false;
+							}
+
+						Board.screenWipe();
+						Board.displayBoard();
+						Deck.showHand();
 					}
-				else
-					{
-						System.out.println("There is nothing to play");
-					}
+
 			}
 
 		public static void attack()
 			{
+				int playerDamage = 0;
+				int opponentDamage = 0;
+
 				for (int i = 0; i < 4; i++)
 					{
 						if (Board.board[2][i] != null)
@@ -172,34 +225,42 @@ public class Room
 									{
 										Player.people.get(0).setScale(
 												Player.people.get(0).getScale() + Board.board[2][i].getCardPower());
+										playerDamage = playerDamage + Board.board[2][i].getCardPower();
 									}
 								else
 									{
-										Board.board[1][i].setCardHealth(Board.board[1][i].getCardHealth() - Board.board[2][i].getCardPower());
-										if (Board.board[1][i].getCardHealth() == 0)
+										Board.board[1][i].setCardHealth(
+												Board.board[1][i].getCardHealth() - Board.board[2][i].getCardPower());
+										if (Board.board[1][i].getCardHealth() < 1)
 											{
 												Board.board[1][i] = null;
 											}
+										playerDamage = playerDamage + Board.board[2][i].getCardPower();
 									}
 							}
-						
+
 						if (Board.board[1][i] != null)
 							{
 								if (Board.board[2][i] == null)
 									{
 										Player.people.get(0).setScale(
 												Player.people.get(0).getScale() - Board.board[1][i].getCardPower());
+										opponentDamage = opponentDamage + Board.board[1][i].getCardPower();
 									}
 								else
 									{
-										Board.board[2][i].setCardHealth(Board.board[2][i].getCardHealth() - Board.board[1][i].getCardPower());
+										Board.board[2][i].setCardHealth(
+												Board.board[2][i].getCardHealth() - Board.board[1][i].getCardPower());
 										if (Board.board[2][i].getCardHealth() == 0)
 											{
 												Board.board[2][i] = null;
 											}
+										opponentDamage = opponentDamage + Board.board[1][i].getCardPower();
 									}
 							}
 					}
+//				System.out.println("You did " + playerDamage + " damage");
+//				System.out.println(opponentDamage + " was dealt");
 			}
 
 		public static void opponentCardDrop()

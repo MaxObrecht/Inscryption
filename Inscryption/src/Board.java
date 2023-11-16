@@ -191,14 +191,24 @@ public class Board
 				prepareBoard();
 				displayBoard();
 			}
-		
+
 		public static void scaleCheck()
-		{
-			System.out.println();
-			System.out.println("------------------------------------------------------------------------------------------");
-			System.out.println("SCALE: " + Player.people.get(0).getScale());
-			System.out.println("------------------------------------------------------------------------------------------");
-			
-		}
+			{
+				System.out.println();
+				System.out.println(
+						"------------------------------------------------------------------------------------------");
+				System.out.println("SCALE: " + Player.people.get(0).getScale());
+				System.out.println(
+						"------------------------------------------------------------------------------------------");
+
+			}
+
+		public static void screenWipe()
+			{
+				for (int i = 0; i < 50; i++)
+					{
+						System.out.println();
+					}
+			}
 
 	}

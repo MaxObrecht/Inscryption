@@ -93,11 +93,21 @@ public class Deck
 
 		public static void fillStagnantPlayerDeck()
 			{
-				stagnantPlayerDeck.add(allCard.get(8));
+				stagnantPlayerDeck.add(new Card(allCard.get(8).getCardHealth(), allCard.get(8).getCardPower(), allCard.get(8).getCardBloodCost(), allCard.get(8).getCardBoneCost(), allCard.get(8).getCardSigil(), allCard.get(8).getCardTribe(), allCard.get(8).getCardName())); //add the rest
+				// idea for a way to do this en masse stagnantPlayerDeck.add(new Card(allCard.get(a).getCardHealth(); allCard.get(a).getCardAttack... a is switched if it is a wolf or something else
+				//stagnantPlayerDeck.add(allCard.get(8));
 				stagnantPlayerDeck.add(allCard.get(35));
 				stagnantPlayerDeck.add(allCard.get(34));
 				stagnantPlayerDeck.add(allCard.get(26));
 			}
+		
+//		public static void fillStagnantPlayerDeck2()
+//			{
+//				stagnantPlayerDeck.add(new Card(allCard.get(8)));
+//				stagnantPlayerDeck.add(allCard.get(35));
+//				stagnantPlayerDeck.add(allCard.get(34));
+//				stagnantPlayerDeck.add(allCard.get(26));
+//			}
 
 		public static void fillPlayerDeck()
 			{
@@ -146,12 +156,12 @@ public class Deck
 
 		public static void OpponentDeckOne()
 			{
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 1; i++)
 					{
 						// elk fawn
 						opponentDeck.add(allCard.get(13));
 					}
-				for (int i = 0; i < 4; i++)
+				for (int i = 0; i < 2; i++)
 					{
 						// wolf
 						opponentDeck.add(allCard.get(8));
