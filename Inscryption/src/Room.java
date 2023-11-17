@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Room
 	{
 //type (opponent, shop, campfire, etc.)-- run method based on type
+		private static boolean round;
 		static Scanner userIntInput = new Scanner(System.in);
 		static Scanner userStringInput = new Scanner(System.in);
 
@@ -28,8 +29,9 @@ public class Room
 
 		public static void opponentRoom()
 			{
-				boolean round = true;
+				round = true;
 				Player.setPlayers();
+				Player.people.get(0).setScale(0);
 				Deck.fillOpponentDeck();
 				Deck.fillPlayerDeck();
 				Deck.fillSquirrelDeck();
@@ -53,8 +55,10 @@ public class Room
 						playerPlace();
 						Board.screenWipe();
 						Board.displayBoard();
-						attack();
+						playerAttack();
 						opponentCardDrop();
+						opponentAttack();
+						winCondition();
 					}
 			}
 
@@ -212,10 +216,9 @@ public class Room
 
 			}
 
-		public static void attack()
+		public static void playerAttack()
 			{
 				int playerDamage = 0;
-				int opponentDamage = 0;
 
 				for (int i = 0; i < 4; i++)
 					{
@@ -239,6 +242,15 @@ public class Room
 									}
 							}
 
+					}
+			}
+
+		public static void opponentAttack()
+			{
+				int opponentDamage = 0;
+
+				for (int i = 0; i < 4; i++)
+					{
 						if (Board.board[1][i] != null)
 							{
 								if (Board.board[2][i] == null)
@@ -259,8 +271,6 @@ public class Room
 									}
 							}
 					}
-//				System.out.println("You did " + playerDamage + " damage");
-//				System.out.println(opponentDamage + " was dealt");
 			}
 
 		public static void opponentCardDrop()
@@ -272,6 +282,28 @@ public class Room
 								Board.board[1][i] = Board.board[0][i];
 								Board.board[0][i] = null;
 							}
+					}
+			}
+
+		public static void winCondition()
+			{
+				if (Player.people.get(0).getScale() >= 10)
+					{
+						System.out.println("YOU WIN");
+						
+						System.out.println("Are you ready to go to the next room?");
+						String next = userStringInput.nextLine();
+						
+						round = false;
+					}
+				else if (Player.people.get(0).getScale() <= -10)
+					{
+						System.out.println("YOU LOSE");
+						
+						System.out.println("Are you ready to go to the next room?");
+						String next = userStringInput.nextLine();
+						
+						round = false;
 					}
 			}
 

@@ -81,7 +81,14 @@ public class Deck
 			{
 				for (int i = 0; i < 10; i++)
 					{
-						squirrelDeck.add(allCard.get(36));
+						//squirrelDeck.add(allCard.get(36));
+								squirrelDeck.add(new Card(allCard.get(36).getCardHealth(),
+										allCard.get(36).getCardPower(),
+										allCard.get(36).getCardBloodCost(),
+										allCard.get(36).getCardBoneCost(),
+										allCard.get(36).getCardSigil(),
+										allCard.get(36).getCardTribe(),
+										allCard.get(36).getCardName()));
 					}
 			}
 
@@ -95,19 +102,6 @@ public class Deck
 
 		public static void fillStagnantPlayerDeck()
 			{
-				// stagnantPlayerDeck.add(new Card(allCard.get(8).getCardHealth(),
-				// allCard.get(8).getCardPower(), allCard.get(8).getCardBloodCost(),
-				// allCard.get(8).getCardBoneCost(), allCard.get(8).getCardSigil(),
-				// allCard.get(8).getCardTribe(), allCard.get(8).getCardName())); //add the rest
-				// idea for a way to do this en masse stagnantPlayerDeck.add(new
-				// Card(allCard.get(a).getCardHealth(); allCard.get(a).getCardAttack... a is
-				// switched if it is a wolf or something else
-
-//				stagnantPlayerDeck.add(allCard.get(8));
-//				stagnantPlayerDeck.add(allCard.get(35));
-//				stagnantPlayerDeck.add(allCard.get(34));
-//				stagnantPlayerDeck.add(allCard.get(26));
-
 				stagnantPlayerDeckInt.add(8);
 				stagnantPlayerDeckInt.add(35);
 				stagnantPlayerDeckInt.add(34);
@@ -116,11 +110,6 @@ public class Deck
 
 		public static void fillPlayerDeck()
 			{
-//				for (int i = 0; i < stagnantPlayerDeck.size(); i++)
-//					{
-//						playerDeck.add(stagnantPlayerDeck.get(i));
-//					}
-
 				for (int i = 0; i < stagnantPlayerDeckInt.size(); i++)
 					{
 						playerDeck.add(new Card(allCard.get(stagnantPlayerDeckInt.get(i)).getCardHealth(),
@@ -185,32 +174,10 @@ public class Deck
 
 		public static void OpponentDeckOne()
 			{
-//				for (int i = 0; i < 1; i++)
-//					{
-//						// elk fawn
-//						opponentDeck.add(allCard.get(13));
-//					}
-//				for (int i = 0; i < 2; i++)
-//					{
-//						// wolf
-//						opponentDeck.add(allCard.get(8));
-//					}
-//				for (int i = 0; i < 2; i++)
-//					{
-//						// bullfrog
-//						opponentDeck.add(allCard.get(26));
-//					}
-
-				preOpponentDeck.add(13);
-				preOpponentDeck.add(8);
+				//preOpponentDeck.add(13);
+				//preOpponentDeck.add(8);
 				preOpponentDeck.add(8);
 				preOpponentDeck.add(26);
 				preOpponentDeck.add(26);
-
 			}
-
-//		public static void shuffle()
-//			{
-//				Collections.shuffle("I wanna find some variable to put here");
-//			}
 	}
